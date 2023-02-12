@@ -1,0 +1,50 @@
+
+#include <stdio.h>
+
+struct tame
+{
+    int s;
+    int m;
+    int h;
+};
+struct tame add(struct tame P1 , struct tame P2)
+{
+    struct tame p3;
+    
+    p3.s = P1.s + P2.s;
+    int a1 = p3.s/60;
+    int b1 = p3.s%60;
+    p3.s = b1;
+    
+    
+    p3.m = P1.m + P2.m;
+    int a2 = p3.m/60;
+    int b2 = p3.m%60;
+    p3.m = b2 + a1;
+    
+    
+    p3.h = P1.h + P2.h;
+    int a3 = p3.h/24;
+    p3.h = p3.h + a2;
+    int b3 = p3.h%24;
+    p3.h = b3;
+    
+    
+    return p3;    
+}
+void print(struct tame p)
+{
+    printf("The resultant time is :- %d:%d:%d",p.h,p.m,p.s);
+}
+int main()
+{
+    struct tame p,p1;
+    printf("Enter first time in hours , minutes and  seconds:- ");
+    scanf("%d%d%d",&p.h,&p.m,&p.s);
+    
+    printf("\nEnter first time in hours, minutes and seconds:- ");
+    scanf("%d%d%d",&p1.h,&p1.m,&p1.s);
+    struct tame p3 = add(p,p1);
+    print(p3);
+    return 0;
+}
